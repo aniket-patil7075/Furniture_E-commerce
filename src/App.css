@@ -1,0 +1,57 @@
+.main{
+  background-color: #3d5d50;
+}
+
+.gray{
+  color: #ffffff80;
+}
+
+
+/* CSSS For CRAFT component */
+.d-flex .card .btn1{
+  display: none;
+}
+
+.d-flex .card:hover .btn1{
+  display: block;
+  margin: auto;
+}
+
+.craft{
+  height: 400px;
+  margin-top: 100px;
+}
+
+/* CSSS for CRAFT Image move to upside */
+.img-hov{
+  transform: translateY(25px);
+  transition: transform 1s;
+  margin-bottom: 50px;
+}
+
+.img-hov:hover{
+  transform: translate(0px);
+}
+
+
+.row .card .btn1{
+  display: none;
+}
+
+.row .card:hover .btn1{
+  display: block;
+  margin: auto;
+}
+
+.chair{
+  height: 500px;
+}
+
+a:link ,a:visited{
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 17px;
+}
+
+
