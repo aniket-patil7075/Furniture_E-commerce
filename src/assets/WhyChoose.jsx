@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 function WhyChoose() {
   return (
     <div className='bg-body-tertiay mt-5'>
-      <Container>
+      <Container className='py-5'>
         <Row >
             <Col className='p-4 mt-5'>
                 <h1>Why Choose Us</h1>
