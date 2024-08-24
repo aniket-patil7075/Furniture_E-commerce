@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 function Testimonials() {
   return (
-    <div className="bg-body-tertiary text-center py-5">
+    <div className="bg-body-tertiary text-center py-5 mt-5">
         <h1>Testimonials</h1>
       <Carousel>
         <Carousel.Item>
