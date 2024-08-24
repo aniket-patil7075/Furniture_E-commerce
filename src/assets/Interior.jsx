@@ -28,18 +28,21 @@ function Interior() {
                 <table>
                     <tr>
                         <td  className='pt-3 pe-3'>
-                            
+                            <i className="fa-solid fa-circle-dot pe-1"></i>
                             Donec vitae odio quis nisl dapibus malesuada
                         </td>
                         <td className='pt-3 pe-3'>
+                            <i className="fa-solid fa-circle-dot pe-1"></i>
                             Donec vitae odio quis nisl dapibus malesuada    
                         </td>
                     </tr>
                     <tr>
                         <td className='pt-3 pe-3'>
+                            <i className="fa-solid fa-circle-dot pe-1"></i>
                             Donec vitae odio quis nisl dapibus malesuada
                         </td>
                         <td className='pt-3 pe-3'>
+                            <i className="fa-solid fa-circle-dot pe-1"></i>
                             Donec vitae odio quis nisl dapibus malesuada
                         </td>
                     </tr>
