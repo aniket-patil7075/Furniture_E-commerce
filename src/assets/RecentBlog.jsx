@@ -24,7 +24,7 @@ function RecentBlog() {
             </Col>
             <Col className='text-center'>
             <Card style={{ width: "22rem" ,height:"450px" }} className="border-0 bg-body-tertiary">              
-                <Card.Img variant="top" src="../post-1.jpg" className='rounded rounded-4'/>              
+                <Card.Img variant="top" src="../post-2.jpg" className='rounded rounded-4'/>              
               <Card.Body>
                 <Card.Title style={{fontSize:"18px"}}>First Time Home Owner Ideas</Card.Title>
                 <Card.Text>
@@ -35,7 +35,7 @@ function RecentBlog() {
             </Col>
             <Col className='text-center'>
             <Card style={{ width: "22rem" ,height:"450px" }} className="border-0 bg-body-tertiary">              
-                <Card.Img variant="top" src="../post-1.jpg" className='rounded rounded-4'/>              
+                <Card.Img variant="top" src="../post-3.jpg" className='rounded rounded-4'/>              
               <Card.Body>
                 <Card.Title style={{fontSize:"18px"}}>First Time Home Owner Ideas</Card.Title>
                 <Card.Text>
