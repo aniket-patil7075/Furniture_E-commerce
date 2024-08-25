@@ -3,6 +3,9 @@ import { Container } from 'react-bootstrap'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Shipping from './Shipping';
+import Craft from './Craft'
+import Testimonials from "./Testimonials";
 
 function Services() {
   return (
@@ -20,6 +23,9 @@ function Services() {
         </Col>
       </Row>
       </Container>
+      <Shipping/>
+      <Craft/>
+      <Testimonials/>
     </div>
   )
 }
