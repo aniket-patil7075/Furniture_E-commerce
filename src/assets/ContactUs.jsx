@@ -11,7 +11,7 @@ import Form from 'react-bootstrap/Form';
 
 function ContactUs() {
   return (
-    <div>
+    <div className='bg-light'>
       <Container fluid>
       <Row className='main text-white p-3 text-start'>
         <Col className='ms-5'>
@@ -25,11 +25,11 @@ function ContactUs() {
         </Col>
       </Row>
       </Container>
-      <Container fluid className='bg-light'>
-  <Row className='m-5 align-items-center px-5'>
+      <Container fluid className='bg-light ' >
+  <Row className='my-5 align-items-center '  style={{paddingLeft:"200px" , paddingRight:"150px"}}>
     <Col md={1}>
       <div className='bg-success text-white h-75 w-75 py-2 rounded rounded-3'>
-      <IoLocationSharp className=' ps-3 fs-1'/>
+      <IoLocationSharp className=' ps-3 pe-2 fs-1'/>
       </div>
     </Col>
     <Col md={3}>
@@ -41,7 +41,7 @@ function ContactUs() {
     </Col>
     <Col md={1}>
     <div className='bg-success text-white h-75 w-75 py-2 rounded rounded-3'>
-    <MdEmail className=' ps-3 fs-1'/>
+    <MdEmail className='pe-2 ps-3 fs-1'/>
       </div>
     </Col>
     <Col md={3}>
@@ -49,16 +49,16 @@ function ContactUs() {
     </Col>
     <Col md={1}>
     <div className='bg-success text-white h-75 w-75 p-2 rounded rounded-3'>
-    <FaPhoneAlt className='ps-1 fs-1' style={{paddingTop:"10", paddingBottom:"10"}}/>
+    <FaPhoneAlt className='ps-1 fs-1 pe-3'  style={{paddingTop:"10", paddingBottom:"10"}}/>
       </div>
     </Col>
     <Col md={3}>
       <p className='text-start'>+1 294 3925 3939</p>
     </Col>
   </Row>
-<Form>
-<Row className="mb-3 text-start px-5 mx-5">
-        <Form.Group as={Col} controlId="formGridfname">
+<Form >
+<Row className="mb-3 text-center  " style={{paddingLeft:"150px" , paddingRight:"150px"}}>
+        <Form.Group as={Col} controlId="formGridfname" >
           <Form.Label>First Name</Form.Label>
           <Form.Control type="text" />
         </Form.Group>
@@ -68,15 +68,19 @@ function ContactUs() {
           <Form.Control type="text" />
         </Form.Group>
       </Row>
-      <Form.Group className="mb-3 mx-5 px-5 text-start" controlId="exampleForm.ControlInput1">
+     <Row  className="mb-3 text-center"  style={{paddingLeft:"150px" , paddingRight:"150px"}}>
+       <Form.Group className=" text-start" controlId="exampleForm.ControlInput1">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" />
       </Form.Group>
-      <Form.Group className="mb-3 mx-5 px-5 text-start" controlId="exampleForm.ControlTextarea1">
+     </Row>
+      <Row  className="mb-3 text-center " style={{paddingLeft:"150px" , paddingRight:"150px"}} >
+      <Form.Group className=" text-start" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Message</Form.Label>
         <Form.Control as="textarea" rows={5} />
       </Form.Group>
-      <Form.Group className='px-5 mx-5 text-start my-5'>
+      </Row>
+      <Form.Group className=' mx-5 text-start my-5' style={{paddingLeft:"100px"}}>
       <Button variant="dark" type='submit' className='mb-5 rounded-pill px-4'>Send Message</Button>
       </Form.Group>
 </Form>
