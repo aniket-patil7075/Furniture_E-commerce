@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 // import { MdDelete } from "react-icons/md";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -122,6 +123,29 @@ function Cart() {
               </tr>
             </tfoot>
           </table>
+        </Row>
+      </Container>
+      <Container className="my-5">
+        <Row>
+          <Col>
+           <h3 className="pt-2">Coupon</h3>
+           <p className="text-secondary py-2">Enter your coupon code if you have one.</p>
+           <input className="form-control  w-75" type="text" placeholder="Coupon Code"></input>
+           <Button variant="dark rounded-pill fw-bold p-3 mb-4" style={{width:"150px",marginTop:"20px"}}>Apply Coupon</Button>
+          </Col>
+          <Col>
+              <h3 className="pt-2">CART TOTALS</h3>
+              <hr></hr>
+              <div className="d-flex">
+                <p className=" pt-3 pb-2 " style={{paddingRight:"150px"}}>Subtotal</p>
+                <h6 className="pt-3 pb-2">${getTotal()}</h6>
+              </div>
+              <div className="d-flex">
+                <p className="  pb-2 " style={{paddingRight:"177px"}}>Total</p>
+                <h6 className=" pb-2">${getTotal()}</h6>
+              </div>
+              <Button variant="dark rounded-pill fw-bold p-3 mb-4" style={{width:"250px",marginTop:"20px"}}>Apply Coupon</Button>
+          </Col>
         </Row>
       </Container>
     </div>
