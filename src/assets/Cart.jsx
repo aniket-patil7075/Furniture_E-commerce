@@ -6,8 +6,15 @@ import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
+  const navigate = useNavigate();
+
+  const goToCheckout = () => {
+    navigate('/checkout');
+  };
+
   const [cart, setCart] = useState([]);
   const [qty,dispatch]=useReducer(reducer,0)
   function reducer(qty,action){
@@ -54,11 +61,11 @@ function Cart() {
   }
 
   return (
-    <div>
+    <div  className=" ">
       <Container fluid>
         <Row className="main text-white p-3 text-start">
           <Col className="ms-5">
-            <h5 className="fw-bold w-75 mt-5 display-5 ms-4 mb-4">Cart</h5>
+            <h5 className="fw-bold w-75 mt-5 display-5 ms-5 mb-4">Cart</h5>
             {/* <p className='gray fs-6 mt-4 mb-4 ms-4'>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
           <Button variant="warning rounded-pill fw-bold p-3 w-25 ms-4 mb-4" >Shop Now</Button>
           <Button variant="outline-light rounded-pill fw-bold p-3 w-25 ms-4 mb-4">Explore</Button> */}
@@ -68,7 +75,7 @@ function Cart() {
           </Col>
         </Row>
         <Row>
-          <table className="table mt=4 mb-4">
+          <table className="table mt=4 mb-4 " style={{marginLeft:"125px"}}>
             <thead>
               <tr>
                 <th>ID</th>
@@ -126,11 +133,15 @@ function Cart() {
         </Row>
       </Container>
       <Container className="my-5">
+        <Row className="mb-5">
+        <Button variant="dark rounded-pill fw-bold p-3 mb-4 me-5" style={{width:"150px",marginTop:"20px"}}>Update Cart</Button>
+        <Button variant="dark rounded-pill fw-bold p-3 mb-4" style={{width:"200px",marginTop:"20px"}}>Continue Shopping</Button>
+        </Row>
         <Row>
           <Col>
            <h3 className="pt-2">Coupon</h3>
            <p className="text-secondary py-2">Enter your coupon code if you have one.</p>
-           <input className="form-control  w-75" type="text" placeholder="Coupon Code"></input>
+           <input className="form-control  w-75 py-3" type="text" placeholder="Coupon Code"></input>
            <Button variant="dark rounded-pill fw-bold p-3 mb-4" style={{width:"150px",marginTop:"20px"}}>Apply Coupon</Button>
           </Col>
           <Col>
@@ -144,7 +155,7 @@ function Cart() {
                 <p className="  pb-2 " style={{paddingRight:"177px"}}>Total</p>
                 <h6 className=" pb-2">${getTotal()}</h6>
               </div>
-              <Button variant="dark rounded-pill fw-bold p-3 mb-4" style={{width:"250px",marginTop:"20px"}}>Apply Coupon</Button>
+              <Button variant="dark rounded-pill fw-bold p-3 mb-4" onClick={goToCheckout} style={{width:"250px",marginTop:"20px"}}>Proceed to Checkout</Button>
           </Col>
         </Row>
       </Container>
