@@ -6,8 +6,29 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import BillingAddress from "./BillingAddress";
 import Accordion from "react-bootstrap/Accordion";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+// import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import QRCodeWithCountdown from "./QRCodeWithCountdown";
 
 function Checkout() {
+  const navigate = useNavigate();
+
+  const goToQRcode = () => {
+    navigate('/qrcode');
+  };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
   return (
     <div className="bg-secondary bg-opacity-25 ">
       <Container fluid>
@@ -42,7 +63,37 @@ function Checkout() {
           </div>
           <Col className="my-5">
             <h3>Billing Details</h3>
-            <BillingAddress />
+            <div className="bg-light border border-secondary border-opacity-25 mt-3 me-3 pt-5 pb-1 px-4">
+              <BillingAddress />
+              <Form>
+                {["checkbox"].map((type) => (
+                  <div key={`default-${type}`} className="mb-2 px-4">
+                    <Form.Check // prettier-ignore
+                      className="pt-5"
+                      type={type}
+                      id={`default-${type}`}
+                      label={`Create an account?`}
+                    />
+                  </div>
+                ))}
+              </Form>
+
+              <Form>
+                {["checkbox"].map((type) => (
+                  <div key={`default-${type}`} className="mb-5 px-4">
+                    <Form.Check // prettier-ignore
+                      className="pt-1 "
+                      type={type}
+                      id={`default-${type}`}
+                      label={`Ship to a different address?`}
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
+                  </div>
+                ))}
+              </Form>
+              {isChecked && <BillingAddress />}
+            </div>
           </Col>
           <Col className="my-5">
             <h3>Coupon Code</h3>
@@ -131,6 +182,28 @@ function Checkout() {
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
+              <Button
+                variant="dark rounded-pill fw-bold ms-3 p-3 mb-4"
+                style={{ width: "150px", marginTop: "20px" }}
+                // onClick={goToQRcode}
+                  onClick={handleShow}
+              >
+                Google pay
+              </Button>
+              <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><QRCodeWithCountdown/></Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
               <Button
                 variant="dark rounded-pill fw-bold ms-3 p-3 mb-4"
                 style={{ width: "150px", marginTop: "20px" }}
