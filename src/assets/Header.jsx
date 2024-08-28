@@ -26,14 +26,14 @@ function Header() {
           {/* <Navbar.Brand  href="/" className='text-white fw-bold fs-2'>Furni<span className='text-secondary'>.</span></Navbar.Brand> */}
           <Link to="/" className='text-white fw-bold fs-2'>Furni<span className='text-secondary'>.</span></Link>
           <Nav className="">
-            <Link  to="/" className='gray'>Home</Link>
-            <Link  to="/Shop" className='gray'>Shop</Link>
-            <Link  to="/AboutUs" className='gray'>About us</Link>
-            <Link  to="/Services" className='gray'>Services</Link>
-            <Link  to="/Blog" className='gray'>Blog</Link>
-            <Link  to="/ContactUs" className='gray'>Contact us</Link>
-            <Link  to="/User" className='gray'> <i class="fa-regular fa-user"></i></Link>
-            <Link  to="/Cart" className='gray'> <i class="fa-solid fa-cart-shopping"></i> <sup>{cart.length}</sup> </Link>
+            <Link  to="/" className='text-light text-opacity-75 fw-bolder px-3'>Home</Link>
+            <Link  to="/Shop" className='text-light text-opacity-75 fw-bolder px-3'>Shop</Link>
+            <Link  to="/AboutUs" className='text-light text-opacity-75 fw-bolder px-3'>About us</Link>
+            <Link  to="/Services" className='text-light text-opacity-75 fw-bolder px-3'>Services</Link>
+            <Link  to="/Blog" className='text-light text-opacity-75 fw-bolder px-3'>Blog</Link>
+            <Link  to="/ContactUs" className='text-light text-opacity-75 fw-bolder px-3'>Contact us</Link>
+            <Link  to="/User" className='text-light fw-bolder ps-5 pe-3'> <i className="fa-regular fa-user"></i></Link>
+            <Link  to="/Cart" className='text-light fw-bolder px-3'> <i className="fa-solid fa-cart-shopping"></i> <sup>{cart.length}</sup> </Link>
           </Nav>
         </Container>
       </Navbar>
