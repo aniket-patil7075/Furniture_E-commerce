@@ -4,15 +4,22 @@ import Craft from './Craft'
 import WhyChoose from './WhyChoose'
 import Testimonials from './Testimonials'
 import RecentBlog from './RecentBlog'
+import Interior from './Interior'
 
 function Home() {
   return (
     <div>
       <Modern/>
       <Craft/>
-      {/* <WhyChoose/> */}
+      <WhyChoose/>
+      <Interior/>
       <Testimonials/>
+      <div className='d-flex justify-content-between mt-5 px-5'>
+        <h1 className='px-3'>Recent Blog</h1>
+        <a href='#' className='tex-dark text-decoaration-underline px-3 fw-300'>View all post</a>
+      </div>
       <RecentBlog/>
+     
     </div>
   )
 }
