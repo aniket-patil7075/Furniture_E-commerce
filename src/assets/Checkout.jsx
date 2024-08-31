@@ -5,18 +5,41 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import BillingAddress from "./BillingAddress";
-import Accordion from "react-bootstrap/Accordion";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-// import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 import QRCodeWithCountdown from "./QRCodeWithCountdown";
+import CreditCard from "./CreditCard";
+import COD from "./COD";
 
 function Checkout() {
+  
+
+  const [selectedOption, setSelectedOption] = useState("QR");
+  
+  
+
+  const renderPaymentOption = () => {
+    switch (selectedOption) {
+      case "QR":
+        return <QRCodeWithCountdown />;
+      case "Card":
+        return <CreditCard />;
+      case "COD":
+        return <COD/>
+      default:
+        return null;
+    }
+  };
+
+  useEffect(() => {
+    console.log('Selected option:', selectedOption);
+  }, [selectedOption]);
+  
   const navigate = useNavigate();
 
   const goToQRcode = () => {
-    navigate('/qrcode');
+    navigate("/qrcode");
   };
 
   const [show, setShow] = useState(false);
@@ -146,70 +169,48 @@ function Checkout() {
                   </tbody>
                 </table>
               </div>
-              <Accordion defaultActiveKey="0">
-                <Accordion.Item eventKey="0" className="my-3">
-                  <Accordion.Header className="bg-light">
-                    Direct bank transfer
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    Make your payment directly into our bank account. Please use
-                    your Order ID as the payment reference. Your order won’t be
-                    shipped until the funds have cleared in our account.
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-              <Accordion defaultActiveKey="0">
-                <Accordion.Item eventKey="0" className="my-3">
-                  <Accordion.Header className="bg-light">
-                    Cheque Payment
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    Make your payment directly into our bank account. Please use
-                    your Order ID as the payment reference. Your order won’t be
-                    shipped until the funds have cleared in our account.
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-              <Accordion defaultActiveKey="0">
-                <Accordion.Item eventKey="0" className="my-3">
-                  <Accordion.Header className="bg-light">
-                    Paypal
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    Make your payment directly into our bank account. Please use
-                    your Order ID as the payment reference. Your order won’t be
-                    shipped until the funds have cleared in our account.
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
+
               <Button
                 variant="dark rounded-pill fw-bold ms-3 p-3 mb-4"
                 style={{ width: "150px", marginTop: "20px" }}
                 // onClick={goToQRcode}
-                  onClick={handleShow}
-              >
-                Google pay
-              </Button>
-              <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body><QRCodeWithCountdown/></Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-              <Button
-                variant="dark rounded-pill fw-bold ms-3 p-3 mb-4"
-                style={{ width: "150px", marginTop: "20px" }}
+                onClick={handleShow}
               >
                 Place Order
               </Button>
+              <Modal show={show} onHide={handleClose} className="bg-secondary bg-opacity-25">
+                <Modal.Header closeButton>
+                  <Modal.Title>Payment Option</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="bg-secondary bg-opacity-25">
+                  
+                  <Row className="p-3 bg-light border border-secondary border-opacity-25">
+                      
+                      {renderPaymentOption()}
+                      
+                  </Row>
+                  <h5 className="py-3 ps-2">UPI , Cards & More</h5>
+                  <Row className=" p-3 border border-secondary border-opacity-25">
+                    <div className="p-3 bg-light border border-secondary border-opacity-25" onClick={() => setSelectedOption("QR")}>
+                      <a href="">UPI / QR</a>
+                    </div>
+                    <div className="p-3 bg-light border border-secondary border-opacity-25" onClick={() => setSelectedOption("Card")}>
+                    <a href="">Cards</a>
+                    </div>
+                    <div className="p-3 bg-light border border-secondary border-opacity-25" onClick={() => setSelectedOption("COD")}>
+                    <a href="">Cash on Delivery</a>
+                    </div>
+                  </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button variant="primary" onClick={handleClose}>
+                    Save Changes
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </Row>
           </Col>
         </Row>
