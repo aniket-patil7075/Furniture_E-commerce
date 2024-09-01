@@ -7,8 +7,8 @@ import Button from 'react-bootstrap/Button';
 
 function Footer() {
   return (
-    <div>
-      <div className="position-relative mt-5 text-start px-5 ms-5 mb-5 ">
+    <div style={{marginTop:"200px"}}>
+      <div className="position-relative mt-5 text-start py-5 px-5 ms-5 mb-5 ">
         <div className="position-absolute top-5 end-0 translate-middle">
           <img src="../sofa.png" alt="" height={300} width={350}/>
         </div>
@@ -38,7 +38,7 @@ function Footer() {
         </a>
         <Row>
           <Col>
-            <p>
+            <p className=" text-secondary">
               Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio
               quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
               vulputate velit imperdiet dolor tempor tristique. Pellentesque
@@ -59,20 +59,20 @@ function Footer() {
               </div>
             </div>
           </Col>
-          <Col md={2}>
-            <ul className="list-unstyled">
-              <li>
+          <Col md={2} className="">
+            <ul className="list-unstyled ">
+              <li className="">
                 <a href="#" className="text-dark">
                   About us
                 </a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">Services</a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">Blog</a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">Contact us</a>
               </li>
             </ul>
@@ -82,10 +82,10 @@ function Footer() {
               <li>
                 <a href="#">Support</a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">Knowledge Base</a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">Live chat</a>
               </li>
             </ul>
@@ -95,13 +95,13 @@ function Footer() {
               <li>
                 <a href="#">Jobs</a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">Our Team</a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">Leadership</a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">privacy Policy</a>
               </li>
             </ul>
@@ -111,17 +111,17 @@ function Footer() {
               <li>
                 <a href="#">Nordiac Chair</a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">Kruzo aero Chair</a>
               </li>
-              <li className="mt-2">
+              <li className="mt-3">
                 <a href="#">Ergonomic Chair</a>
               </li>
             </ul>
           </Col>
         </Row>
         <hr />
-        <div className="d-flex">
+        <div className="d-flex  text-secondary">
           <div className="p-2 flex-grow-1">
             <ul className="list-unstyled">
               <li>

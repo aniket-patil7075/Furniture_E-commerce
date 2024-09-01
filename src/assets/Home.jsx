@@ -16,7 +16,7 @@ function Home() {
       <Testimonials/>
       <div className='d-flex justify-content-between mt-5 px-5'>
         <h1 className='px-3'>Recent Blog</h1>
-        <a href='#' className='tex-dark text-decoaration-underline px-3 fw-300'>View all post</a>
+        <u><a href='http://localhost:5173/Blog' className='tex-dark text-decoaration-underline px-3 fw-300'>View all post</a></u>
       </div>
       <RecentBlog/>
      

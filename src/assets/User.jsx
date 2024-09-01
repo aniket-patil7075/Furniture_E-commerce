@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function User() {
   const navigate = useNavigate();
+
   const goToSignup = () => {
     navigate("/Signup");
   };
@@ -35,7 +36,7 @@ function User() {
             <p className="text-start ps-3 ">
               Don't have account?
               <a
-                href="#"
+                href=""
                 className="color-red "
                 style={{ color: "red", fontSize: "15px" }}
                 onClick={goToSignup}

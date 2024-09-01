@@ -42,7 +42,7 @@ function WhyChoose() {
                 <div className='position-relative '>
                     <img src='./dots-yellow.svg' />
                     <div className='position-absolute top-50 end-0'>
-                        <img src='./why-choose-us-img.jpg' className='rounded rounded-5 ' style={{ width: "26rem" ,height:"520px" }}/>
+                        <img src='./why-choose-us-img.jpg' className='rounded rounded-5 ' style={{ width: "27rem" ,height:"520px" }}/>
                     </div>
                 </div>
             </Col>

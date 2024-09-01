@@ -11,6 +11,12 @@ import ContactUs from './assets/ContactUs';
 import User from './assets/User';
 import Cart from './assets/Cart';
 import Footer from './assets/Footer';
+import Checkout from './assets/Checkout';
+import QRCodeWithCountdown from './assets/QRCodeWithCountdown';
+import COD from './assets/COD';
+import BillingAddress from './assets/BillingAddress';
+import Checkout2 from './assets/Checkout2';
+import Signup from './assets/Signup';
 
 function App() {
   
@@ -28,6 +34,11 @@ function App() {
         <Route path='/ContactUs' element={<ContactUs/>}/>
         <Route path='/User' element={<User/>}/>
         <Route path='/Cart' element={<Cart/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/check' element={<Checkout2/>}/>
+        <Route path='/qrcode' element={<QRCodeWithCountdown/>}/>
+        <Route path='/billingAdd' element={<BillingAddress/>} />
+        <Route path='/Signup' element={<Signup/>} />
       </Routes>
       <Footer/>
      </BrowserRouter>

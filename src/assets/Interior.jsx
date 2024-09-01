@@ -1,8 +1,14 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 function Interior() {
+    const navigate = useNavigate();
+
+    const goToShop = () => {
+      navigate("/Shop");
+    };
   return (
     <div className='bg-body-tertiary mt-5'>
       <Container className='py-5'>
@@ -47,7 +53,7 @@ function Interior() {
                         </td>
                     </tr>
                 </table>
-                <Button variant="dark" className="rounded-pill fw-bold p-3 w-25 mt-5">
+                <Button variant="dark" className="rounded-pill fw-bold p-3 w-25 mt-5" onClick={goToShop}>
               Explore
             </Button>
             </Col>
@@ -59,7 +65,7 @@ function Interior() {
                 <div>
                     <h6>Nordiac Chair</h6>
                     <p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio</p>
-                    <p className=''>Read More</p>
+                    <u><p className=''>Read More</p></u>
                 </div>
             </div>
             <div className='d-flex p-1'>
@@ -67,7 +73,7 @@ function Interior() {
                 <div>
                     <h6>Kruzo Aero Chair</h6>
                     <p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio</p>
-                    <p className=''>Read More</p>
+                    <u><p className=''>Read More</p></u>
                 </div>
             </div>
             <div className='d-flex p-1'>
@@ -75,7 +81,7 @@ function Interior() {
                 <div>
                     <h6>Erogonomic Chair</h6>
                     <p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio</p>
-                    <p className=''>Read More</p>
+                    <u><p className=''>Read More</p></u>
                 </div>
             </div>
             </div>

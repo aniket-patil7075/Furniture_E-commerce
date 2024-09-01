@@ -2,8 +2,14 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
 
 function Craft() {
+  const navigate = useNavigate();
+
+  const goToShop = () => {
+    navigate("/Shop");
+  };
   return (
     <div>
       <Container>
@@ -14,7 +20,7 @@ function Craft() {
               Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet
               velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
             </p>
-            <Button variant="dark" className="rounded-pill fw-bold p-3 w-50">
+            <Button variant="dark" className="rounded-pill fw-bold p-3 w-50" onClick={goToShop} >
               Explore
             </Button>
           </div>

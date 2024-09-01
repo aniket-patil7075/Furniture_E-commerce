@@ -4,13 +4,13 @@ import Card from "react-bootstrap/Card";
 
 function RecentBlog() {
   return (
-    <div>
-      <div className='d-flex justify-content-between mt-5 px-5'>
+    <div className=''>
+      {/* <div className='d-flex justify-content-between mt-5 px-5'>
         <h1 className='px-3'>Recent Blog</h1>
         <a href='#' className='tex-dark text-decoaration-underline px-3 fw-300'>View all post</a>
-      </div>
+      </div> */}
       <Container>
-        <Row className='py-5'>
+        <Row className='pt-5' style={{marginBottom:"-120px"}}>
             <Col className='text-center'>
             <Card style={{ width: "22rem" ,height:"450px" }} className="border-0 bg-body-tertiary">              
                 <Card.Img variant="top" src="../post-1.jpg" className='rounded rounded-4'/>              

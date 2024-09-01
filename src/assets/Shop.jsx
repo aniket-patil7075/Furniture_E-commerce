@@ -12,9 +12,9 @@ function Shop() {
        <Container fluid>
       <Row className='main text-white p-3 text-start'>
         <Col className='ms-5'>
-          <h5 className='fw-bold w-75 mt-5 display-5 ms-4 mb-4'>Shop</h5>
-          <p className='gray fs-6 mt-4 mb-4 ms-4'>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-          <Button variant="warning rounded-pill fw-bold p-3 w-25 ms-4 mb-4" >Shop Now</Button>
+          <h1 className='fw-bold w-75 mt-5 display-5 ms-5'>Shop</h1>
+          <p className='gray fs-6 mt-4 mb-4 ms-5'>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+          <Button variant="warning rounded-pill fw-bold p-3 w-25 ms-5 mb-4" >Shop Now</Button>
           <Button variant="outline-light rounded-pill fw-bold p-3 w-25 ms-4 mb-4">Explore</Button>
         </Col>
         <Col>
