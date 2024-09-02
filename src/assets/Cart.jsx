@@ -7,13 +7,15 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 function Cart() {
+  // const history = useHistory();
+
+
   const navigate = useNavigate();
 
-  const goToCheckout = () => {
-    navigate('/checkout');
-  };
+  
 
   const [cart, setCart] = useState([]);
   const [qty,dispatch]=useReducer(reducer,0)
@@ -37,6 +39,14 @@ function Cart() {
     })
     return total
   }
+  const goToCheckout = () => {
+    // navigate('/checkout');
+    const total = getTotal();
+    const qty1=qty
+    navigate('/checkout', { state: { total } });
+    console.log("Total in cart: "+total)
+    console.log("Qty in cart : ",qty)
+  };
 
   useEffect(() => {
     fetch("http://localhost:3000/cart").then((resp1) => {
