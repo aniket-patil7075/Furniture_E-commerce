@@ -81,6 +81,22 @@
       "price": 75,
       "stock": 3,
       "qty": 1
+    },
+    {
+      "id": "3",
+      "image": "./product-2.png",
+      "name": "Ergonomic Chair",
+      "price": 45,
+      "stock": 10,
+      "qty": 1
+    },
+    {
+      "id": "1",
+      "image": "./product-3.png",
+      "name": "Nordiac Chair",
+      "price": 50,
+      "stock": 7,
+      "qty": 1
     }
   ]
 }

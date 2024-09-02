@@ -35,7 +35,7 @@ function App() {
         <Route path='/User' element={<User/>}/>
         <Route path='/Cart' element={<Cart/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
-        <Route path='/check' element={<Checkout2/>}/>
+        {/* <Route path='/check' element={<Checkout2/>}/> */}
         <Route path='/qrcode' element={<QRCodeWithCountdown/>}/>
         <Route path='/billingAdd' element={<BillingAddress/>} />
         <Route path='/Signup' element={<Signup/>} />
