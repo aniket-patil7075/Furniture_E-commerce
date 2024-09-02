@@ -1,23 +1,48 @@
 import React from "react";
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import BillingAddress from "./BillingAddress";
-import { useState,useEffect } from "react";
+import { useState,useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import QRCodeWithCountdown from "./QRCodeWithCountdown";
 import CreditCard from "./CreditCard";
 import COD from "./COD";
+import { useLocation } from "react-router-dom";
 
 function Checkout() {
-  
+  const location = useLocation();
+  const getTotal = location.state?.total;
+  console.log("Total in checkout : ", getTotal);
+
+  const [cart, setCart] = useState([]);
+  const [qty,dispatch]=useReducer(reducer,0)
+  function reducer(qty,action){
+    switch(action.type){
+      case 'changecartqty':
+        return(cart.filter((c)=>{
+          return(
+            c.id===action.payload.id?(c.qty=action.payload.qty):c.qty
+          )
+        }))
+        default:
+          return qty
+    }
+  }
+  useEffect(() => {
+    fetch("http://localhost:3000/cart").then((resp1) => {
+      resp1.json().then((resp2) => {
+        console.log(resp2);
+        setCart(resp2);
+      });
+    });
+  }, []);
 
   const [selectedOption, setSelectedOption] = useState("QR");
-  
-  
 
   const renderPaymentOption = () => {
     switch (selectedOption) {
@@ -26,16 +51,16 @@ function Checkout() {
       case "Card":
         return <CreditCard />;
       case "COD":
-        return <COD/>
+        return <COD />;
       default:
         return null;
     }
   };
 
   useEffect(() => {
-    console.log('Selected option:', selectedOption);
+    console.log("Selected option:", selectedOption);
   }, [selectedOption]);
-  
+
   const navigate = useNavigate();
 
   const goToQRcode = () => {
@@ -150,21 +175,22 @@ function Checkout() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="py-3">Top Up T-Shirt x 1</td>
-                      <td>$250.00</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3">Polo Shirt x 1</td>
-                      <td>$250.00</td>
-                    </tr>
+                    {cart.map((item, index) => {
+                      return (
+                        <tr>
+                          <td className="py-3">{item.name}</td>
+                          <td>${item.qty * item.price}</td>
+                        </tr>
+                      );
+                    })}
+
                     <tr>
                       <td className="fw-bold py-3">Cart Subtotal</td>
-                      <td className="fw-bold">$250.00</td>
+                      <td className="fw-bold">${getTotal}</td>
                     </tr>
                     <tr>
                       <td className="fw-bold py-3">Order Total</td>
-                      <td className="fw-bold">$250.00</td>
+                      <td className="fw-bold">${getTotal}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -178,27 +204,37 @@ function Checkout() {
               >
                 Place Order
               </Button>
-              <Modal show={show} onHide={handleClose} className="bg-secondary bg-opacity-25">
+              <Modal
+                show={show}
+                onHide={handleClose}
+                className="bg-secondary bg-opacity-25"
+              >
                 <Modal.Header closeButton>
                   <Modal.Title>Payment Option</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="bg-secondary bg-opacity-25">
-                  
                   <Row className="p-3 bg-light border border-secondary border-opacity-25">
-                      
-                      {renderPaymentOption()}
-                      
+                    {renderPaymentOption()}
                   </Row>
                   <h5 className="py-3 ps-2">UPI , Cards & More</h5>
                   <Row className=" p-3 border border-secondary border-opacity-25">
-                    <div className="p-3 bg-light border border-secondary border-opacity-25" onClick={() => setSelectedOption("QR")}>
+                    <div
+                      className="p-3 bg-light border border-secondary border-opacity-25"
+                      onClick={() => setSelectedOption("QR")}
+                    >
                       <a href="">UPI / QR</a>
                     </div>
-                    <div className="p-3 bg-light border border-secondary border-opacity-25" onClick={() => setSelectedOption("Card")}>
-                    <a href="">Cards</a>
+                    <div
+                      className="p-3 bg-light border border-secondary border-opacity-25"
+                      onClick={() => setSelectedOption("Card")}
+                    >
+                      <a href="">Cards</a>
                     </div>
-                    <div className="p-3 bg-light border border-secondary border-opacity-25" onClick={() => setSelectedOption("COD")}>
-                    <a href="">Cash on Delivery</a>
+                    <div
+                      className="p-3 bg-light border border-secondary border-opacity-25"
+                      onClick={() => setSelectedOption("COD")}
+                    >
+                      <a href="">Cash on Delivery</a>
                     </div>
                   </Row>
                 </Modal.Body>
