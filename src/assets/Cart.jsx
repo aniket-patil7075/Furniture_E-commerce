@@ -1,51 +1,50 @@
-import React, { useEffect, useState,useReducer, act } from "react";
+import React, { useEffect, useState, useReducer, act } from "react";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 // import { MdDelete } from "react-icons/md";
 import Dropdown from "react-bootstrap/Dropdown";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 // import { useHistory } from 'react-router-dom';
 
 function Cart() {
   // const history = useHistory();
 
-
   const navigate = useNavigate();
 
-  
-
   const [cart, setCart] = useState([]);
-  const [qty,dispatch]=useReducer(reducer,0)
-  function reducer(qty,action){
-    switch(action.type){
-      case 'changecartqty':
-        return(cart.filter((c)=>{
-          return(
-            c.id===action.payload.id?(c.qty=action.payload.qty):c.qty
-          )
-        }))
-        default:
-          return qty
+  const [qty, dispatch] = useReducer(reducer, 0);
+
+  function reducer(qty, action) {
+    switch (action.type) {
+      case "changecartqty":
+        return cart.filter((c) => {
+          // return(
+          //   c.id===action.payload.id?(c.qty=action.payload.qty):c.qty
+          // )
+          c.id === action.payload.id ? { ...c, qty: action.payload.qty } : c;
+        });
+      default:
+        return qty;
     }
   }
 
-  function getTotal(){
-    let total=0;
-    cart.map((ct)=>{
-      total=total+(ct.qty*ct.price)
-    })
-    return total
+  function getTotal() {
+    let total = 0;
+    cart.map((ct) => {
+      total = total + ct.qty * ct.price;
+    });
+    return total;
   }
   const goToCheckout = () => {
     // navigate('/checkout');
     const total = getTotal();
-    const qty1=qty
-    navigate('/checkout', { state: { total } });
-    console.log("Total in cart: "+total)
-    console.log("Qty in cart : ",qty)
+    const qty1 = qty;
+    navigate("/checkout", { state: { total } });
+    console.log("Total in cart: " + total);
+    console.log("Qty in cart : ", qty);
   };
 
   useEffect(() => {
@@ -55,23 +54,22 @@ function Cart() {
         setCart(resp2);
       });
     });
-    getTotal()
+    getTotal();
   }, []);
 
-  function removeCartItem(id)
-  {
-    fetch(`http://localhost:3000/cart/${id}`,{
-      method:"delete"
-    }).then((resp1)=>{
-      resp1.json().then((resp2)=>{
-        console.log(resp2)
-      })
-    })
+  function removeCartItem(id) {
+    fetch(`http://localhost:3000/cart/${id}`, {
+      method: "delete",
+    }).then((resp1) => {
+      resp1.json().then((resp2) => {
+        console.log(resp2);
+      });
+    });
     window.location.reload();
   }
 
   return (
-    <div  className=" ">
+    <div className=" ">
       <Container fluid>
         <Row className="main text-white p-3 text-start">
           <Col className="ms-5">
@@ -85,7 +83,7 @@ function Cart() {
           </Col>
         </Row>
         <Row>
-          <table className="table mt=4 mb-4 " style={{marginLeft:"125px"}}>
+          <table className="table mt=4 mb-4 " style={{ marginLeft: "125px" }}>
             <thead>
               <tr>
                 <th>ID</th>
@@ -106,28 +104,31 @@ function Cart() {
                     </td>
                     <td>{item.name}</td>
                     <td>
-                      <Form.Select aria-label="Default select example" value={item.qty} onChange={(e)=>{
-                        dispatch({
-                          type:"changecartqty",
-                          payload:{
-                            id:item.id,
-                            qty:e.target.value
-                          }
-                        })
-                      }}>
-                        {
-                          [...Array(item.stock).keys()].map((q)=>{
-                            return(
-                              <option key={q+1}>{q+1}</option>
-                            )
-                          })
-                        }
+                      <Form.Select
+                        aria-label="Default select example"
+                        value={item.qty}
+                        onChange={(e) => {
+                          e.preventDefault();
+                          dispatch({
+                            type: "changecartqty",
+                            payload: {
+                              id: item.id,
+                              qty: e.target.value,
+                            },
+                          });
+                        }}
+                      >
+                        {[...Array(item.stock).keys()].map((q) => {
+                          return <option key={q + 1}>{q + 1}</option>;
+                        })}
                       </Form.Select>
-                      
                     </td>
-                    <td>{item.qty*item.price}</td>
+                    <td>{item.qty * item.price}</td>
                     <td>
-                      <i class="fa-solid fa-trash" onClick={()=>removeCartItem(item.id)}></i>
+                      <i
+                        class="fa-solid fa-trash"
+                        onClick={() => removeCartItem(item.id)}
+                      ></i>
                     </td>
                   </tr>
                 );
@@ -144,28 +145,59 @@ function Cart() {
       </Container>
       <Container className="my-5">
         <Row className="mb-5">
-        <Button variant="dark rounded-pill fw-bold p-3 mb-4 me-5" style={{width:"150px",marginTop:"20px"}}>Update Cart</Button>
-        <Button variant="dark rounded-pill fw-bold p-3 mb-4" style={{width:"200px",marginTop:"20px"}}>Continue Shopping</Button>
+          <Button
+            variant="dark rounded-pill fw-bold p-3 mb-4 me-5"
+            style={{ width: "150px", marginTop: "20px" }}
+          >
+            Update Cart
+          </Button>
+          <Button
+            variant="dark rounded-pill fw-bold p-3 mb-4"
+            style={{ width: "200px", marginTop: "20px" }}
+          >
+            Continue Shopping
+          </Button>
         </Row>
         <Row>
           <Col>
-           <h3 className="pt-2">Coupon</h3>
-           <p className="text-secondary py-2">Enter your coupon code if you have one.</p>
-           <input className="form-control  w-75 py-3" type="text" placeholder="Coupon Code"></input>
-           <Button variant="dark rounded-pill fw-bold p-3 mb-4" style={{width:"150px",marginTop:"20px"}}>Apply Coupon</Button>
+            <h3 className="pt-2">Coupon</h3>
+            <p className="text-secondary py-2">
+              Enter your coupon code if you have one.
+            </p>
+            <input
+              className="form-control  w-75 py-3"
+              type="text"
+              placeholder="Coupon Code"
+            ></input>
+            <Button
+              variant="dark rounded-pill fw-bold p-3 mb-4"
+              style={{ width: "150px", marginTop: "20px" }}
+            >
+              Apply Coupon
+            </Button>
           </Col>
           <Col>
-              <h3 className="pt-2">CART TOTALS</h3>
-              <hr></hr>
-              <div className="d-flex">
-                <p className=" pt-3 pb-2 " style={{paddingRight:"150px"}}>Subtotal</p>
-                <h6 className="pt-3 pb-2">${getTotal()}</h6>
-              </div>
-              <div className="d-flex">
-                <p className="  pb-2 " style={{paddingRight:"177px"}}>Total</p>
-                <h6 className=" pb-2">${getTotal()}</h6>
-              </div>
-              <Button variant="dark rounded-pill fw-bold p-3 mb-4" onClick={goToCheckout} style={{width:"250px",marginTop:"20px"}}>Proceed to Checkout</Button>
+            <h3 className="pt-2">CART TOTALS</h3>
+            <hr></hr>
+            <div className="d-flex">
+              <p className=" pt-3 pb-2 " style={{ paddingRight: "150px" }}>
+                Subtotal
+              </p>
+              <h6 className="pt-3 pb-2">${getTotal()}</h6>
+            </div>
+            <div className="d-flex">
+              <p className="  pb-2 " style={{ paddingRight: "177px" }}>
+                Total
+              </p>
+              <h6 className=" pb-2">${getTotal()}</h6>
+            </div>
+            <Button
+              variant="dark rounded-pill fw-bold p-3 mb-4"
+              onClick={goToCheckout}
+              style={{ width: "250px", marginTop: "20px" }}
+            >
+              Proceed to Checkout
+            </Button>
           </Col>
         </Row>
       </Container>

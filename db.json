@@ -91,11 +91,11 @@
       "qty": 1
     },
     {
-      "id": "1",
+      "id": "4",
       "image": "./product-3.png",
       "name": "Nordiac Chair",
-      "price": 50,
-      "stock": 7,
+      "price": 70,
+      "stock": 4,
       "qty": 1
     }
   ]
